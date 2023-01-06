@@ -6,11 +6,20 @@ function App() {
   const [currencyData, setCurrencyData] = useState([]);
   const [searchItem, setSearchItem] = useState("");
   useEffect(() => {
-    fetch(
-      "https://api.coingecko.com/api/v3/coins/markets?vs_currency=INR&order=market_cap_desc&per_page=100&page=1&sparkline=false"
-    )
-      .then((res) => res.json())
-      .then((data) => setCurrencyData(data));
+    function getData() {
+      fetch(
+        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=INR&order=market_cap_desc&per_page=100&page=1&sparkline=false"
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          return setCurrencyData(data);
+        });
+    }
+    getData();
+    const interval = setInterval(() => getData(), 5000);
+    return () => {
+      clearInterval(interval);
+    };
   }, []);
 
   const search = (data) => {

@@ -49,7 +49,7 @@ tbody tr {
 thead tr th,
 tbody tr td {
   padding: 15px 0;
-  text-align: right;
+  text-align: center;
   padding-right: 10px;
   font-size: 18px;
 }
@@ -85,4 +85,14 @@ tbody tr td:first-child p {
 
 .green {
   color: #11d811;
+}
+
+@media (max-width: 850px) {
+  .coins {
+    overflow-x: scroll;
+  }
+
+  tbody tr td:first-child p {
+    text-align: left;
+  }
 }

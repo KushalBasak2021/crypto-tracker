@@ -1,7 +1,6 @@
 import React from "react";
 
 const Coin = ({ data }) => {
-  console.log(data);
   return (
     <div className="coins">
       <table>
